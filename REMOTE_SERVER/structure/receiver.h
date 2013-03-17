@@ -60,6 +60,12 @@ public:
         _edgeList(edgeList),
         _database(database) {}
 
+    ~GetEdgeCommandReceiver()
+    {
+        delete _nodeList;
+        delete _edgeList;
+    }
+
     /*!
     * Add the all edge objects from database into the collection
     * given as a parameter to the constructor.
@@ -133,6 +139,11 @@ public:
         _nodeList(nodeList),
         _database(database) {}
 
+    ~GetNodeCommandReceiver()
+    {
+        delete _nodeList;
+    }
+
     /*!
     * Add the all node objects from database into the collection
     * given as a parameter to the constructor.
@@ -182,6 +193,11 @@ public:
     SetEdgeCommandReceiver(QSqlDatabase database, QVector<Edge * > * edgeList) :
         _edgeList(edgeList),
         _database(database) {}
+
+    ~SetEdgeCommandReceiver()
+    {
+        delete _edgeList;
+    }
 
     /*!
     * Update the all sensor objects that are on the database according

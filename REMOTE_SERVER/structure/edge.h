@@ -36,6 +36,11 @@ public:
         _sensorCollection = new SensorCollection();
     }
 
+    ~Edge()
+    {
+        delete _sensorCollection;
+    }
+
     /*!
     * Get the node ID.
     *

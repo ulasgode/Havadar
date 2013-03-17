@@ -31,6 +31,11 @@ public:
         _problematicSensor = problematicSensor;
     }
 
+    ~ProblematicSensor()
+    {
+        delete _problematicSensor;
+    }
+
     /*!
     * Get the node ID.
     *

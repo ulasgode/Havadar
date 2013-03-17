@@ -61,6 +61,11 @@ public:
         _getCommandReceiver = new GetEdgeCommandReceiver(database, nodeList, edgeList);
     }
 
+    ~GetEdgeCommand()
+    {
+        delete _getCommandReceiver;
+    }
+
     /*!
     * Execute the command's receiver.
     */
@@ -98,6 +103,11 @@ public:
     GetNodeCommand(QSqlDatabase database, QVector<Node * > * nodeList)
     {
         _getCommandReceiver = new GetNodeCommandReceiver(database, nodeList);
+    }
+
+    ~GetNodeCommand()
+    {
+        delete _getCommandReceiver;
     }
 
     /*!
@@ -138,6 +148,11 @@ public:
     SetEdgeCommand(QSqlDatabase database, QVector<Edge * > *edgeList)
     {
         _setCommandReceiver = new SetEdgeCommandReceiver(database, edgeList);
+    }
+
+    ~SetEdgeCommand()
+    {
+        delete _setCommandReceiver;
     }
 
     /*!

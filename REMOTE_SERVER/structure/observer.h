@@ -1,6 +1,7 @@
 #ifndef OBSERVER_H
 #define OBSERVER_H
 
+
 class Observer
 {
 public:
@@ -33,10 +34,8 @@ class ObserverOverallView : public Observer
 {
 public:
     ObserverOverallView(QVector<Edge * > * edgeList, QVector<Node * > * nodeList, QTableView * tableView, QStandardItemModel * modelView)
-        : _edgeList(edgeList), _nodeList(nodeList), _tableView(tableView), _modelView(modelView) {}
+        : _edgeList(edgeList), _nodeList(nodeList), _tableView(tableView), _modelView(modelView) {
 
-    void Update()
-    {
         _modelView = new QStandardItemModel(_tableView);
             _modelView->setHorizontalHeaderItem(0, new QStandardItem(QString("Node A")));
             _modelView->setHorizontalHeaderItem(1, new QStandardItem(QString("Node B")));
@@ -57,7 +56,10 @@ public:
             _modelView->setHorizontalHeaderItem(14, new QStandardItem(QString("Illumination")));
             _modelView->setHorizontalHeaderItem(15, new QStandardItem(QString("OVERALL")));
         _tableView->setModel(_modelView);
+    }
 
+    void Update()
+    {
             QVector<Edge * >::iterator iterator = _edgeList->begin();
             Edge * e1 = * iterator;
             int x = 0;
@@ -110,10 +112,8 @@ class ObserverDiagnoseView : public Observer
 {
 public:
     ObserverDiagnoseView(DiagnoseModule * diagnoseModule, QVector<Edge * > * edgeList, QVector<Node * > * nodeList, QTableView * tableView, QStandardItemModel * modelView)
-        : _diagnoseModule(diagnoseModule), _edgeList(edgeList), _nodeList(nodeList), _tableView(tableView), _modelView(modelView) {}
+        : _diagnoseModule(diagnoseModule), _edgeList(edgeList), _nodeList(nodeList), _tableView(tableView), _modelView(modelView) {
 
-    void Update()
-    {
         _modelView = new QStandardItemModel(_tableView);
             _modelView->setHorizontalHeaderItem(0, new QStandardItem(QString("Node A")));
             _modelView->setHorizontalHeaderItem(1, new QStandardItem(QString("Node B")));
@@ -121,7 +121,10 @@ public:
             _modelView->setHorizontalHeaderItem(3, new QStandardItem(QString("value")));
             _modelView->setHorizontalHeaderItem(4, new QStandardItem(QString("problem")));
         _tableView->setModel(_modelView);
+    }
 
+    void Update()
+    {
         _diagnoseModule->CheckStaticSensorsOnTheEdges(_edgeList);
 
         QVector<ProblematicSensor *>::iterator iterator = _diagnoseModule->GetStaticProblematicSensorCollection()->begin();

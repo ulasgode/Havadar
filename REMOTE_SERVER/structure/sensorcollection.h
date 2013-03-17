@@ -38,6 +38,12 @@ public:
         _staticSensorCollection->CreateSensorCollection();
     }
 
+    ~SensorCollection()
+    {
+        delete _dynamicSensorCollection;
+        delete _staticSensorCollection;
+    }
+
     /*!
     * Display the static sensor objects that is inside of static sensor
     * collection that was created by static sensor factory.
